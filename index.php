@@ -305,6 +305,11 @@ switch (ENVIRONMENT)
 
 	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
 
+	// @ He Fan
+    // check out these constants
+//    var_dump(SELF,BASEPATH, FCPATH, SYSDIR, APPPATH);
+//    exit();
+
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
