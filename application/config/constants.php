@@ -87,5 +87,5 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 //@ He Fan
 //define new constants
 //In my development environments: FCPATH /Users/hefan/Documents/www/test.ci-shopping.com/
-define('THEMES_DIR', FCPATH.'themes/');
+define('THEMES_DIR', 'themes/');
 

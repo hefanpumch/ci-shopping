@@ -16,7 +16,7 @@ class MY_Loader extends CI_Loader
      * switch on the function for turning the website themes
      */
     public function switch_themes_on(){
-        $this->_ci_view_paths = array(THEMES_DIR.$this->_theme => TRUE);
+        $this->_ci_view_paths = array(FCPATH.THEMES_DIR.$this->_theme => TRUE);
     }
 
     /*

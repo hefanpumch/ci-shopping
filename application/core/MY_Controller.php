@@ -15,7 +15,7 @@ class Home_Controller extends CI_Controller
         parent::__construct();
 
         # switch on the themes function
-        $this->load->swith_themes_on();
+        $this->load->switch_themes_on();
     }
 
 }
@@ -28,7 +28,12 @@ class Admin_Controller extends CI_Controller
         parent::__construct();
 
         # switch off the themes function
-        $this->load->swith_themes_off();
+        $this->load->switch_themes_off();
+
+        # Authorization validation
+        if(!$this->session->userdata('admin')){
+            redirect('admin/privilege/login');
+        }
     }
 
 }
