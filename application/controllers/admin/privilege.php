@@ -16,6 +16,7 @@ class privilege extends CI_Controller
         parent::__construct();
         $this->load->helper('captcha');
         $this->load->library('form_validation');
+
     }
 
     public function login(){
@@ -47,6 +48,9 @@ class privilege extends CI_Controller
 
     # validate login
     public function signin(){
+
+        $this->load->model('Admin_model');
+
         # set the rules for form validation
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
@@ -72,11 +76,13 @@ class privilege extends CI_Controller
                 $username = $this->input->post('username', TRUE);
                 $password = $this->input->post('password', TRUE);
 
-                if($username == 'admin' and $password == '123'){
+                $admin = $this->Admin_model->get_admin($username, $password);
+
+                if(!empty($admin->admin_name)){
                     # username and password validation is successful
                     # store the data into session
                     # redirect to the main page
-                    $this->session->set_userdata('admin', $username);
+                    $this->session->set_userdata('admin', $admin->admin_name);
                     redirect('admin/main/index');
 
                 }else{
