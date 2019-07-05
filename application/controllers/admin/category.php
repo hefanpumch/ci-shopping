@@ -82,4 +82,58 @@ class Category extends Admin_Controller
         }
     }
 
+    # update categorical information
+    public function update(){
+        $cat_id = $this->input->post('cat_id');
+
+        # Get all the child categories of the category with the id of 'cat_id'
+        $sub_cates = $this->category_model->list_cate($cat_id);
+        //var_dump($sub_cates);
+        # Get all the Ids of the child categories of the category with the id of 'cat_id'
+        $sub_ids = array();
+        foreach ($sub_cates as $v){
+            $sub_ids[] = $v['cat_id'];
+        }
+        //var_dump($sub_ids);
+
+        $parent_id = $this->input->post('parent_id');
+        # Verify whether the selected parent category is the edited category or its child categories
+        if($parent_id == $cat_id or in_array($parent_id, $sub_ids) ){
+
+            $data['message'] = 'Can not put the current category into itself or its child categories';
+            $data['wait'] = 2;
+            $data['url'] = site_url('admin/category/index').'/'.$cat_id;
+            $this->load->view('message.html', $data);
+
+        }else{
+
+            $data['cat_name'] = $this->input->post('cat_name', TRUE);
+            $data['parent_id'] = $this->input->post('parent_id');
+            $data['unit'] = $this->input->post('measure_unit', TRUE);
+            $data['sort_order'] = $this->input->post('sort_order', TRUE);
+            $data['is_show'] = $this->input->post('is_show');
+//            $data['show_in_nav'] = $this->input->post('show_in_nav');
+            $data['cat_desc'] = $this->input->post('cat_desc', TRUE);
+
+            if($this->category_model->update_cate($data, $cat_id)){
+
+                $data['message'] = 'Update successfully';
+                $data['wait'] = 2;
+                $data['url'] = site_url('admin/category/index');
+                $this->load->view('message.html', $data);
+
+            }else{
+
+                $data['message'] = 'Update failed';
+                $data['wait'] = 2;
+                $data['url'] = site_url('admin/category/edit').'/'.$cat_id;
+                $this->load->view('message.html', $data);
+
+            }
+
+        }
+
+
+    }
+
 }

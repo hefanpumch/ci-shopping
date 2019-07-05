@@ -68,4 +68,15 @@ class Category_model extends CI_Model
 
         return $query->row_array();
     }
+
+    /*
+     * Update
+     */
+    public function update_cate($data, $cat_id){
+
+        $condition['cat_id'] = $cat_id;
+        return $this->db->where($condition)->update(self::TBL_CATE, $data);
+    }
+
+
 }
