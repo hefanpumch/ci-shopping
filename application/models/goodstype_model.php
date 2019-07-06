@@ -6,7 +6,24 @@
  * Time: 13:50
  */
 
-class goodstype
+class Goodstype_model extends CI_Model
 {
+    const TBL_GT = 'goods_type';
+
+    # add new goods type
+    public function add_goodstype($data){
+        return $this->db->insert(self::TBL_GT, $data);
+    }
+
+    # list out the goods types
+    public function list_goodstype($limit, $offset){
+        $query = $this->db->limit($limit, $offset)->get(self::TBL_GT);
+        return $query->result_array();
+    }
+
+    # get the total number of rows
+    public function total_rows(){
+        return $this->db->count_all(self::TBL_GT);
+    }
 
 }
