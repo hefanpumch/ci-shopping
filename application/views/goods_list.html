@@ -3,12 +3,12 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 	<title></title>
-	<link href="styles/general.css" rel="stylesheet" type="text/css" />
-	<link href="styles/main.css" rel="stylesheet" type="text/css" />
+	<link href="<?= base_url('application/views/styles/general.css');?>" rel="stylesheet" type="text/css" />
+	<link href="<?= base_url('application/views/styles/main.css');?>" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <h1>
-	<span class="action-span"><a href="goods.php?act=add">添加新商品</a></span>
+	<span class="action-span"><a href="<?=site_url('admin/goods/add');?>">添加新商品</a></span>
 	<span class="action-span1"><a href="index.php?act=main">SHOP 管理中心</a> </span><span id="search_id" class="action-span1"> - 商品列表 </span>
 	<div style="clear:both"></div>
 </h1>
@@ -101,17 +101,17 @@
 					<td class="first-cell"><span>诺基亚N85</span></td>
 					<td><span>ECS000032</span></td>
 					<td align="right"><span>3010.00</span></td>
-					<td align="center"><img src="images/yes.gif" onclick=""></td>
-					<td align="center"><img src="images/yes.gif" onclick=""></td>
-					<td align="center"><img src="images/yes.gif" onclick=""></td>
-					<td align="center"><img src="images/yes.gif" onclick=""></td>
+					<td align="center"><img src="<?=base_url('application/views/images/yes.gif');?>" onclick=""></td>
+					<td align="center"><img src="<?=base_url('application/views/images/yes.gif');?>" onclick=""></td>
+					<td align="center"><img src="<?=base_url('application/views/images/yes.gif');?>" onclick=""></td>
+					<td align="center"><img src="<?=base_url('application/views/images/yes.gif');?>" onclick=""></td>
 					<td align="center"><span onclick="">100</span></td>
 					<td align="right"><span onclick="">4</span></td>
 					<td align="center">
-						<a href="../goods.php?id=32" target="_blank" title="查看"><img src="images/icon_view.gif" width="16" height="16" border="0"></a>
-						<a href="goods.php?act=edit&amp;goods_id=32" title="编辑"><img src="images/icon_edit.gif" width="16" height="16" border="0"></a>
-						<a href="goods.php?act=copy&amp;goods_id=32" title="复制"><img src="images/icon_copy.gif" width="16" height="16" border="0"></a>
-						<a href="javascript:;" onclick="listTable.remove(32, '您确实要把该商品放入回收站吗？')" title="回收站"><img src="images/icon_trash.gif" width="16" height="16" border="0"></a>
+						<a href="../goods.php?id=32" target="_blank" title="view"><img src="<?=base_url('application/views/images/icon_view.gif');?>" width="16" height="16" border="0"></a>
+						<a href="<?=site_url('admin/goods/edit');?>" title="edit"><img src="<?=base_url('application/views/images/icon_edit.gif');?>" width="16" height="16" border="0"></a>
+						<a href="goods.php?act=copy&amp;goods_id=32" title="copy"><img src="<?=base_url('application/views/images/icon_copy.gif');?>" width="16" height="16" border="0"></a>
+						<a href="javascript:;" onclick="listTable.remove(32, 'Are your sure to move this to bin？')" title="move to bin"><img src="<?=base_url('application/views/images/icon_trash.gif');?>" width="16" height="16" border="0"></a>
 						<a href="goods.php?act=product_list&amp;goods_id=32" title="货品列表"><img src="images/icon_docs.gif" width="16" height="16" border="0"></a>          
 					</td>
 				</tr>

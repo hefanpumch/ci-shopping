@@ -15,7 +15,13 @@ class Goodstype_model extends CI_Model
         return $this->db->insert(self::TBL_GT, $data);
     }
 
-    # list out the goods types
+    # get all the goods types
+    public function get_all_types(){
+        $query = $this->db->get(self::TBL_GT);
+        return $query->result_array();
+    }
+
+    # Pagination data
     public function list_goodstype($limit, $offset){
         $query = $this->db->limit($limit, $offset)->get(self::TBL_GT);
         return $query->result_array();
